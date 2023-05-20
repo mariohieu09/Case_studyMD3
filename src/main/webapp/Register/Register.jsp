@@ -105,19 +105,28 @@
 <body>
 <div class="register-box">
   <h2>Register</h2>
-  <form>
+  <form action="/Admin" method="post">
     <div class="user-box">
-      <input type="text" name="" required="">
+      <input type="text" name="name" required="">
+      <label>Enter your name</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="age" required="">
+      <label>Enter your age</label>
+    </div>
+    <div class="user-box">
+      <input type="text" name="username" required="">
       <label>Username</label>
     </div>
     <div class="user-box">
-      <input type="password" name="" required="">
+      <input type="password" name="password" required="">
       <label>Password</label>
     </div>
     <div class="user-box">
-      <input type="password" name="" required="">
+      <input type="password" name="confirm" required="">
       <label>Confirm password</label>
     </div>
+    <input hidden="hidden" name="action" value="createUser">
     <input type="submit" value="Submit" id="submit"/>
   </form>
 </div>

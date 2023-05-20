@@ -67,10 +67,12 @@
         font-size: 150%;
         color: #fff;
         text-decoration: none;
-        margin-left: 50px;
+        /*margin-left: 50px;*/
     }
     .sidebar a:hover{
         display: block;
+        /*width: 100%;*/
+        /*margin-right: 50px;*/
         background: #03e9f4;
     }
     .container{
@@ -145,8 +147,8 @@
         <h2 style="color: #fff">About Us</h2>
     </div>
     <div class="header2">
-        <a href="login.html"><button>Login</button></a>
-        <a href="Register.html"><button>
+        <a href="/Admin?action=login"><button>Login</button></a>
+        <a href="/Admin?action=register"><button>
             Register</button></a>
     </div>
 
@@ -160,10 +162,10 @@
         <a href="#">Setting</a>
     </div>
     <div class="container">
-        <a href="login.html"><img src="fb_image.png" alt=""></a>
-        <a href="login.html"><img src="open-graph-2e582ae9fae8b0b396ca46ff21fd47a8.jpg" alt=""></a>
-        <a href="login.html"><img src="Valorant-Mobile.jpg" alt=""></a>
-        <a href="login.html"><img src="cau-hinh-may-tinh-choi-fo4.jpg" alt=""></a>
+        <a href="/Admin?action=login"><img src="Welcome/fb_image.png" alt=""></a>
+        <a href="/Admin?action=login"><img src="Welcome/open-graph-2e582ae9fae8b0b396ca46ff21fd47a8.jpg" alt=""></a>
+        <a href="/Admin?action=login"><img src="Welcome/Valorant-Mobile.jpg" alt=""></a>
+        <a href="/Admin?action=login"><img src="Welcome/cau-hinh-may-tinh-choi-fo4.jpg" alt=""></a>
     </div>
 </div>
 <div class="footer">

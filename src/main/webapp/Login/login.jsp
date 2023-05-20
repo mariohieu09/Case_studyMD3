@@ -88,15 +88,16 @@
 <body>
 <div class="login-box">
     <h2>Login</h2>
-    <form>
+    <form action="/Admin" method="post">
         <div class="user-box">
-        <input type="text" name="" required="">
+        <input type="text" name="username" required="">
         <label>Username</label>
         </div>
         <div class="user-box">
-            <input type="password" name="" required="">
+            <input type="password" name="password" required="">
             <label>Password</label>
         </div>
+        <input hidden="hidden" name="action" value="login">
         <input type="submit" value="Submit" id="submit">
     </form>
 
