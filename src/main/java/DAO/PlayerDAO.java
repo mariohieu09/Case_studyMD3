@@ -11,8 +11,8 @@ public class PlayerDAO implements IPlayerDAO{
     private String jdbcUserName = "root";
     private String jdbcPassword = "123456";
 
-    private static final String INSERT_PLAYER = "INSERT INTO player (name, age, games ,image) values(?, ?, ?, ?)";
-    private static final String LIST_PLAYER = "SELECT * from player";
+    private static final String INSERT_PLAYER = "INSERT INTO player (name, age,username, password , games, image ) values(?, ?, ?, ?, ?, DEFAULT)";
+    private static final String LIST_PLAYER = "SELECT name, age, games, image from player";
 
     private static final String SELECT_PLAYER = "SELECT * from player where id = ?";
     private static final String UPDATE_PLAYER = "UPDATE player SET name = ?, age = ?, games = ?, image = ?";
@@ -30,12 +30,14 @@ public class PlayerDAO implements IPlayerDAO{
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_PLAYER);
             String name = player.getName();
             int age = player.getAge();
+            String username = player.getUsername();
+            String password = player.getPassword();
             String games = player.getGames();
-            String path = player.getImage();
             preparedStatement.setString(1, name);
             preparedStatement.setInt(2, age );
-            preparedStatement.setString(3, games);
-            preparedStatement.setString(4, path);
+            preparedStatement.setString(3, username);
+            preparedStatement.setString(4, password);
+            preparedStatement.setString(5, games);
             preparedStatement.executeUpdate();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

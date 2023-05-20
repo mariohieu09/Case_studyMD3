@@ -4,6 +4,8 @@ public class Player {
     private int id;
     private String name;
     private int age;
+    private String username;
+    private String password;
     private String games;
     private String Image;
 
@@ -12,6 +14,30 @@ public class Player {
         this.age = age;
         this.games = games;
         Image = image;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Player(String name, int age, String username, String password, String games) {
+        this.name = name;
+        this.age = age;
+        this.username = username;
+        this.password = password;
+        this.games = games;
     }
 
     public Player(int id, String name, int age, String image) {

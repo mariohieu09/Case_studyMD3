@@ -1,8 +1,15 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<%--
+  Created by IntelliJ IDEA.
+  User: ADMIN
+  Date: 5/21/2023
+  Time: 4:48 AM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
+  <meta charset="UTF-8">
+  <title>Register</title>
   <style>
     html{
       height: 100%;
@@ -84,7 +91,7 @@
       0 0 50px #03e9f4,
       0 0 100px #03e9f4;
     }
-     input span{
+    input span{
       position: absolute;
       display: block;
     }
@@ -98,17 +105,6 @@
     input:hover span:nth-child(1){
       left: 100%;
       transition: 1s;
-    }
-    a{
-      color: #fff;
-      text-decoration: none;
-      position: relative;
-      left: 150px;
-      top: -40px;
-    }
-    .register-box a:hover{
-      text-decoration: white solid;
-      cursor: pointer;
     }
 
   </style>
@@ -137,10 +133,13 @@
       <input type="password" name="confirm" required="">
       <label>Confirm password</label>
     </div>
-    <input hidden="hidden" name="action" value="createUser">
+    <div class="user-box">
+      <input type="text" name="games" required="">
+      <label>Games</label>
+    </div>
+    <input hidden="hidden" name="action" value="createPlayer">
     <input type="submit" value="Submit" id="submit"/>
   </form>
-  <a href="/Admin?action=playerRegister">Sign in as player!</a>
 </div>
 </body>
 </html>

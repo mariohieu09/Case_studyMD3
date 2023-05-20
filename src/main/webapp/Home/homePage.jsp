@@ -12,10 +12,10 @@
     <title>$Title$</title>
     <style>
         tr{
-            border: 1px solid #ffffff;
+            border: 1px solid black;
         }
         .box1{
-            border-right: 1px solid #ffffff;
+            border-right: 1px solid black;
         }
         .box1 img{
             width: 200px;
@@ -25,20 +25,18 @@
 </head>
 <body>
 <h2>${requestScope['message']}</h2>
-<%--<table>--%>
-<%--    <c:forEach items="players" var="player">--%>
-<%--        <tr>--%>
-<%--            <td class="box1"><img src="${player.getImage()}" alt=""></td>--%>
-<%--            <td class="box2"><p>Player: ${player.getName()}</p>--%>
-<%--                <br>Age: ${player.getAge()}--%>
-<%--                <br>Game play: ${player.getGames()}--%>
-<%--            </td>--%>
-<%--            <td><a href="/Admin?action=chat&id=${player.getId()}">Chat</a></td>--%>
-<%--            <td><a href="/Admin?action=gift&id=${player.getId()}">Gift</a></td>--%>
-<%--        </tr>--%>
-
-
-<%--    </c:forEach>--%>
-<%--</table>--%>
+<table>
+    <c:forEach items="${requestScope['players']}" var="player">
+        <tr>
+            <td class="box1"><img src="Home/images/${player.getImage()}" alt=""></td>
+            <td class="box2"><p>Player: ${player.getName()}</p>
+                <br>Age: ${player.getAge()}
+                <br>Game play: ${player.getGames()}
+            </td>
+            <td><a href="/Admin?action=chat&id=${player.getId()}">Chat</a></td>
+            <td><a href="/Admin?action=gift&id=${player.getId()}">Gift</a></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

@@ -33,8 +33,8 @@ public class AdminServlet extends HttpServlet {
             case "register":
                 register(request, response);
                 break;
-            case "homepage":
-                ListPlayer(request, response);
+            case "playerRegister":
+                playerRegister(request, response);
                 break;
             default:
                 welcome(request, response);
@@ -52,11 +52,16 @@ public class AdminServlet extends HttpServlet {
             case "createUser":
                 createUser(request, response);
                 break;
-            case "login":
-                confirmLogin(request, response);
-                break;
             case "createPlayer":
+                createPlayer(request, response);
                 break;
+            case "login":
+                if(confirmLogin(request, response)){
+                    ListPlayer(request, response);
+                };
+                break;
+
+
         }
     }
 
@@ -75,7 +80,7 @@ public class AdminServlet extends HttpServlet {
         List<Player> list = playerDAO.selectAllPlayer();
         try{
             request.setAttribute("players", list);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("homePage");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Home/homePage.jsp");
             dispatcher.forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
@@ -106,20 +111,12 @@ public class AdminServlet extends HttpServlet {
           }
         }
     }
-    private void confirmLogin(HttpServletRequest request, HttpServletResponse response){
+    private boolean confirmLogin(HttpServletRequest request, HttpServletResponse response){
+        boolean confirm = false;
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         if(password.equals(userDAO.selectUser(username))){
-            try {
-                String message = "Welcome " + username;
-                request.setAttribute("message", message);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("Home/homePage.jsp");
-                dispatcher.forward(request, response);
-            } catch (ServletException e) {
-                throw new RuntimeException(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+                confirm = true;
         }else{
             RequestDispatcher dispatcher = request.getRequestDispatcher("Login/login.jsp");
             try {
@@ -130,6 +127,7 @@ public class AdminServlet extends HttpServlet {
                 throw new RuntimeException(e);
             }
         }
+        return confirm;
     }
     private void login(HttpServletRequest request, HttpServletResponse response){
         try{
@@ -145,6 +143,35 @@ public class AdminServlet extends HttpServlet {
         try {
             RequestDispatcher dispatcher = request.getRequestDispatcher("Register/Register.jsp");
             dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void playerRegister(HttpServletRequest request, HttpServletResponse response){
+        try {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Register/playerRegister.jsp");
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void createPlayer(HttpServletRequest request, HttpServletResponse response){
+        String name = request.getParameter("name");
+        int age = request.getIntHeader("age");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String games = request.getParameter("games");
+        try{
+            Player player = new Player(name, age, username, password, games);
+            playerDAO.insertPlayer(player);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Welcome/welcome.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
